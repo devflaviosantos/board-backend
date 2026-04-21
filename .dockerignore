@@ -1,0 +1,13 @@
+.git/
+.github/
+.idea/
+.vscode/
+.specify/
+specs/
+target/
+*.log
+*.tmp
+*.swp
+.env*
+.DS_Store
+Thumbs.db
