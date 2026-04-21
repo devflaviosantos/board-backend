@@ -1,4 +1,4 @@
-name: Deploy Backend
+name: CI
 
 on:
   push:
@@ -7,9 +7,6 @@ on:
     paths:
       - 'src/**'
       - 'pom.xml'
-      - 'Dockerfile'
-      - 'fly.toml'
-      - '.github/workflows/deploy-backend.yml'
 
 jobs:
   test:
@@ -33,16 +30,3 @@ jobs:
 
       - name: Run tests
         run: mvn test
-
-  deploy:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-
-      - name: Deploy to Fly.io
-        run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
