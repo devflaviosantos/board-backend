@@ -1,4 +1,7 @@
 spring:
+  config:
+    activate:
+      on-profile: "!prod"
   datasource:
     url: jdbc:h2:mem:boarddb;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
@@ -15,4 +18,4 @@ spring:
     open-in-view: false
 
 server:
-  port: 8080
+  port: ${PORT:8080}
